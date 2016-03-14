@@ -1,4 +1,4 @@
-# Daily Programming Challenges. Current Program: 0
+# Daily Programming Challenges. Current Program: 1.2
 
 A repository to show off my collection of completed daily programming challenges.
 
