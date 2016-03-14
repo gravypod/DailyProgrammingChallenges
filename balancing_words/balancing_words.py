@@ -1,43 +1,29 @@
-from string import ascii_lowercase
+import string
 
-def weight(text):
+def get_side_weight(side, indexes):
+    alphabet = string.ascii_lowercase
+    return sum((alphabet.index(side[x]) + 1) * (indexes[x] + 1) for x in range(len(side)))
 
-    weight = 0
+def get_weights(word, pivot):
 
-    text = text.strip()
+    left = word[:pivot]
+    right = word[pivot+1:]
 
-    if not text:
-        return weight
+    return get_side_weight(left, list(reversed(range(len(left))))), get_side_weight(right, list(range(len(right))))
 
-
-    for x in range(len(text)):
-        weight += (ascii_lowercase.index(text.lower()[x]) + 1) * (x + 1)
-
-    return weight
-
-def get_sides(pivot, text):
-    return text[:pivot], text[pivot+1:]
-
-def get_pivot_point(text):
-    for x in range(len(text)):
-        sides = get_sides(x, text)
-        if weight(sides[0]) == weight(sides[1]):
-            return x
+def get_pivot(word):
+    for pivot in range(len(word)):
+        weights = get_weights(word, pivot)
+        if weights[0] != weights[1]:
+            continue
+        return pivot
     return -1
 
-def show_info(text):
-    pivot = get_pivot_point(text)
-    if pivot == -1:
-        print(text, "is not balanced")
-    else:
-        sides = get_sides(pivot, text)
-
-        print(sides[0], text[pivot], sides[1], "-", weight(sides[1]))
-
-
 if __name__ == "__main__":
-    text = "stead"
-    show_info(text)
-#    with open("/usr/share/dict/words") as f:
-#        for word in f:
-#            show_info(word)
+    words = ["stead", "CONSUBSTANTIATION", "wrongheaded", "unintelligibility"]
+    for word in words:
+        pivot = get_pivot(word.lower())
+        if pivot == -1:
+            print(word, "has no pivot")
+        else:
+            print(word[:pivot], word[pivot], word[pivot:], "-", pivot)
