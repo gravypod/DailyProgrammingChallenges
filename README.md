@@ -1,4 +1,4 @@
-# Daily Programming Challenges. Current Program: 1.5
+# Daily Programming Challenges. Current Program: 1.7
 
 A repository to show off my collection of completed daily programming challenges.
 
@@ -13,3 +13,6 @@ I will be writing the solutions in a variety of languages.
 | Atbash Cipher   | ./atbash_cipher/   | 1.2            |
 | Balancing Words | ./balancing_words/ | 1.3            |
 | Broken Keyboard | ./broken_keyboard/ | 1.4            |
+| Rule 90         | ./rule_90/         | 1.5            |
+| Alphabet Order  | ./alphabet_order/  | 1.6            |
+
